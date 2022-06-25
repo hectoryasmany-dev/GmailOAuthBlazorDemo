@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Deterministic>false</Deterministic>
+    <AssemblyVersion>1.0.*</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Configurations>Debug;Release;EasyTest</Configurations>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Model.xafml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model.xafml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)' == 'EasyTest' ">
+    <PackageReference Include="DevExpress.ExpressApp.EasyTest.BlazorAdapter" Version="21.2.6" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DevExpress.ExpressApp" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="21.2.6" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="21.2.6" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.WebApi" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="21.2.6" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="21.2.6" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="21.2.6" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.57.0" />
+    <PackageReference Include="Google.Apis.Gmail.v1" Version="1.57.0.2650" />
+    <PackageReference Include="MailKit" Version="3.3.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GmailOAuthBlazorDemo.Module.Blazor\GmailOAuthBlazorDemo.Module.Blazor.csproj">
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\GmailOAuthBlazorDemo.Module\GmailOAuthBlazorDemo.Module.csproj">
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <DxExtendStartupHost>False</DxExtendStartupHost>
+    <Deterministic>false</Deterministic>
+    <AssemblyVersion>1.0.*</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Configurations>Debug;Release;EasyTest</Configurations>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Model.DesignedDiffs.xafml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DevExpress.ExpressApp" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="21.2.6" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="21.2.6" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="21.2.6" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.57.0" />
+    <PackageReference Include="Google.Apis.Gmail.v1" Version="1.57.0.2650" />
+    <PackageReference Include="MailKit" Version="3.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GmailOAuthBlazorDemo.Module\GmailOAuthBlazorDemo.Module.csproj">
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

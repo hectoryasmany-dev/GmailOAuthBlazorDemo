@@ -40,7 +40,7 @@ namespace GmailOAuthBlazorDemo.Module.Controllers
             e.DialogController.AcceptAction.Caption = "Send";
             e.DialogController.SaveOnAccept = true;
 
-            e.DialogController.Accepting += (sender, args) =>
+            e.DialogController.Accepting += async (sender, args) =>
             {
                 try
                 {
@@ -63,7 +63,8 @@ namespace GmailOAuthBlazorDemo.Module.Controllers
                             new FileDataStore(credPath, true)).Result;
 
                     }
-
+                    //refresh user token
+                    var resfreshed = await credential.RefreshTokenAsync(CancellationToken.None);
                     var jwtPayload = GoogleJsonWebSignature.ValidateAsync(credential.Token.IdToken, null, true).Result;
                     var username = jwtPayload.Email;
                     var accessToken = credential.Token.AccessToken;

@@ -50,7 +50,7 @@ namespace GmailOAuthBlazorDemo.Module.Controllers
                     //redirect authorize  URL http://127.0.0.1/authorize/
                     UserCredential credential;
                     using (var stream =
-                           new FileStream("credentials.json", FileMode.Open, FileAccess.Read))
+                           new FileStream("gmailcredentials.json", FileMode.Open, FileAccess.Read))
                     {
                         /* The file token.json stores the user's access and refresh tokens, and is created
                          automatically when the authorization flow completes for the first time. */
@@ -63,8 +63,14 @@ namespace GmailOAuthBlazorDemo.Module.Controllers
                             new FileDataStore(credPath, true)).Result;
 
                     }
+                    //var accesTokenInfo = credential.GetAccessTokenForRequestAsync();
+                    //var jwt = credential.Token.IsExpired();
                     //refresh user token
-                    var resfreshed = await credential.RefreshTokenAsync(CancellationToken.None);
+                    if (credential.Token.IsExpired(Google.Apis.Util.SystemClock.Default))
+                    {
+                        var resfreshed = await credential.RefreshTokenAsync(CancellationToken.None);
+
+                    }
                     var jwtPayload = GoogleJsonWebSignature.ValidateAsync(credential.Token.IdToken, null, true).Result;
                     var username = jwtPayload.Email;
                     var accessToken = credential.Token.AccessToken;

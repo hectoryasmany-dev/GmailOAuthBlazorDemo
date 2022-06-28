@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/GmailOAuthBlazorDemo.Blazor.Server/token.json
+/GmailOAuthBlazorDemo.Blazor.Server/gmailcredentials.json
